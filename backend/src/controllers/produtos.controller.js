@@ -26,7 +26,10 @@ export async function getProdutosPorCategoria(req, res, next) {
 
 // CRIAR PRODUTO
 export async function criarProduto(req, res, next) {
-  const { nome, categoria, preco, imagem, detalhes } = req.body;
+  const { nome, categoria, preco } = req.body;
+  const imagem = req.file ? req.file.filename : null;
+
+  let sabores = req.body.sabores;
 
   if (!nome || !categoria || !preco) {
     const err = new Error("Nome, categoria e preço são obrigatórios");
@@ -35,9 +38,16 @@ export async function criarProduto(req, res, next) {
   }
 
   try {
+    // Normaliza sabores: sempre array, mesmo que só tenha 1 item
+    const saboresFormatados = Array.isArray(sabores)
+      ? sabores.map((s) => s.trim()).filter((s) => s)
+      : typeof sabores === "string"
+      ? [sabores.trim()]
+      : [];
+
     const result = await pool.query(
-      "INSERT INTO produtos (nome, categoria, preco, imagem, detalhes) VALUES ($1, $2, $3, $4, $5) RETURNING *",
-      [nome, categoria, preco, imagem || null, detalhes || null]
+      "INSERT INTO produtos (nome, categoria, preco, imagem, sabores) VALUES ($1, $2, $3, $4, $5) RETURNING *",
+      [nome, categoria, preco, imagem || null, saboresFormatados]
     );
 
     res.status(201).json(result.rows[0]);
@@ -49,14 +59,19 @@ export async function criarProduto(req, res, next) {
 // ATUALIZAR PRODUTO
 export async function atualizarProduto(req, res, next) {
   const { id } = req.params;
-  const { nome, categoria, preco, imagem, detalhes } = req.body;
+  const { nome, categoria, preco, imagem, sabores } = req.body;
 
   try {
+    // Converte a string de sabores em um array também na atualização
+    const saboresFormatados = sabores
+      ? sabores.split(",").map((s) => s.trim()).filter((s) => s)
+      : [];
+
     const result = await pool.query(
       `UPDATE produtos 
-       SET nome = $1, categoria = $2, preco = $3, imagem = $4, detalhes = $5 
+       SET nome = $1, categoria = $2, preco = $3, imagem = $4, sabores = $5 
        WHERE id = $6 RETURNING *`,
-      [nome, categoria, preco, imagem || null, detalhes || null, id]
+      [nome, categoria, preco, imagem || null, saboresFormatados, id]
     );
 
     if (result.rows.length === 0) {
@@ -92,4 +107,3 @@ export async function deletarProduto(req, res, next) {
     next(error);
   }
 }
-

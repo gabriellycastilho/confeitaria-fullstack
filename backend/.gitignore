@@ -1,0 +1,31 @@
+# Dependências instaladas
+node_modules/
+
+# Arquivo de variáveis de ambiente
+.env
+
+# Build / compilados
+dist/
+build/
+
+# Logs
+*.log
+logs/
+
+# Arquivos temporários do sistema e editores
+.DS_Store
+*.swp
+*.tmp
+
+# Pastas de cache (se usar alguma)
+.cache/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Arquivos de certificado e chave privada (se tiver)
+*.pem
+*.key
+
+# Pasta do coverage dos testes (se usar teste)
+coverage/
