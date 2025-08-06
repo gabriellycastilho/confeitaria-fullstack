@@ -56,6 +56,7 @@ export async function criarProduto(req, res, next) {
   }
 }
 
+
 // ATUALIZAR PRODUTO
 export async function atualizarProduto(req, res, next) {
   const { id } = req.params;
@@ -63,8 +64,10 @@ export async function atualizarProduto(req, res, next) {
 
   try {
     // Converte a string de sabores em um array também na atualização
-    const saboresFormatados = sabores
-      ? sabores.split(",").map((s) => s.trim()).filter((s) => s)
+    const saboresFormatados = Array.isArray(sabores)
+      ? sabores.map((s) => s.trim()).filter((s) => s)
+      : typeof sabores === "string"
+      ? [sabores.trim()]
       : [];
 
     const result = await pool.query(

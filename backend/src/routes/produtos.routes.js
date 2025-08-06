@@ -10,11 +10,13 @@ import {
 import { autenticarToken } from "../middlewares/authMiddleware.js";
 import { upload } from "../middlewares/upload.js";
 
+
 const router = Router();
 
 // LISTAR (público)
 router.get("/", getProdutos);
 router.get("/:categoria", getProdutosPorCategoria);
+
 
 // CRIAR (só admin)
 router.post("/", autenticarToken, upload.single("imagem"), criarProduto);
