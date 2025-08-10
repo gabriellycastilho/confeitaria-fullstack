@@ -1,9 +1,9 @@
 import { Router } from "express";
 import {
   getRecheiosBolo,
-  criarRecheioBolo,
-  atualizarRecheioBolo,
-  deletarRecheioBolo,
+  postRecheioBolo,
+  updateRecheioBolo,
+  deleteRecheioBolo,
 } from "../controllers/recheiosBolo.controller.js";
 import multer from "multer";
 
@@ -14,13 +14,13 @@ const upload = multer({ dest: "uploads/" });
 router.get("/", getRecheiosBolo);
 
 // Criar recheio (com upload imagem)
-router.post("/", upload.single("imagem"), criarRecheioBolo);
+router.post("/", upload.single("imagem"), postRecheioBolo);
 
 // Atualizar recheio (com upload imagem opcional)
-router.put("/:id", upload.single("imagem"), atualizarRecheioBolo);
+router.put("/:id", upload.single("imagem"), updateRecheioBolo);
 
 // Deletar recheio
-router.delete("/:id", deletarRecheioBolo);
+router.delete("/:id", deleteRecheioBolo);
 
 export default router;
 // O código acima define as rotas para gerenciar recheios de bolo, incluindo listagem, criação, atualização e deleção. As funções correspondentes são importadas do controlador de recheios de bolo. O Multer é utilizado para lidar com o upload de imagens dos recheios.

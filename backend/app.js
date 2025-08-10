@@ -9,6 +9,8 @@ import pedidosRoutes from "./src/routes/pedidos.routes.js";
 import recheiosBoloRoutes from "./src/routes/recheiosBolo.routes.js";
 import authRoutes from "./src/routes/auth.routes.js";
 import cestasRoutes from "./src/routes/cestas.routes.js";
+import precosRecheioRoutes from "./src/routes/precosRecheio.routes.js";
+import recheiosComPrecoRoutes from "./src/routes/recheiosComPreco.routes.js";
 
 const app = express();
 
@@ -24,9 +26,12 @@ app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 // Rotas
 app.use("/produtos", produtosRoutes);
 app.use("/pedidos", pedidosRoutes);
-app.use("/recheios-bolo", recheiosBoloRoutes);
 app.use("/cestas", cestasRoutes);
 app.use("/auth", authRoutes);
+
+app.use("/recheios-bolo", recheiosBoloRoutes);
+app.use("/precos-recheio", precosRecheioRoutes);
+app.use("/recheios", recheiosComPrecoRoutes);
 
 // Middleware de erro SEMPRE depois das rotas
 app.use(errorHandler);
