@@ -1,5 +1,5 @@
 import express from "express";
-import { criarPedido, listarPedidos, atualizarStatusPedido } from "../controllers/pedidos.controller.js";
+import { criarPedido, listarPedidos, atualizarStatusPedido } from "../../controllers/pedidos/pedidos.controller.js";
 
 const router = express.Router();
 

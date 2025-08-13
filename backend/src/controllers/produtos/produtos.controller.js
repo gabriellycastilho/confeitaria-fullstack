@@ -1,4 +1,4 @@
-import { pool } from "../config/db.js";
+import { pool } from "../../config/db.js";
 
 // LISTAR TODOS OS PRODUTOS
 export async function getProdutos(req, res, next) {
@@ -55,7 +55,6 @@ export async function criarProduto(req, res, next) {
     next(error);
   }
 }
-
 
 // ATUALIZAR PRODUTO
 export async function atualizarProduto(req, res, next) {

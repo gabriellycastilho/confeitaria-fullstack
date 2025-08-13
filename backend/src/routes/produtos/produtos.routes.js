@@ -5,18 +5,16 @@ import {
   criarProduto,
   atualizarProduto,
   deletarProduto,
-} from "../controllers/produtos.controller.js";
+} from "../../controllers/produtos/produtos.controller.js";
 
-import { autenticarToken } from "../middlewares/authMiddleware.js";
-import { upload } from "../middlewares/upload.js";
-
+import { autenticarToken } from "../../middlewares/authMiddleware.js";
+import { upload } from "../../middlewares/upload.js";
 
 const router = Router();
 
 // LISTAR (público)
 router.get("/", getProdutos);
 router.get("/:categoria", getProdutosPorCategoria);
-
 
 // CRIAR (só admin)
 router.post("/", autenticarToken, upload.single("imagem"), criarProduto);

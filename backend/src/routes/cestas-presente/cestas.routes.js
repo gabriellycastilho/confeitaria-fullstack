@@ -1,7 +1,7 @@
 // src/routes/cestas.routes.js
 import multer from "multer";
 import express from "express";
-import { salvarCesta, buscarCestas, atualizarCesta, deletarCesta } from "../controllers/cestas.controller.js";
+import { salvarCesta, buscarCestas, atualizarCesta, deletarCesta } from "../../controllers/cestas-presente/cestas.controller.js";
 
 const router = express.Router();
 

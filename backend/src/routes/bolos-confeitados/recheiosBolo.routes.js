@@ -4,7 +4,7 @@ import {
   postRecheioBolo,
   updateRecheioBolo,
   deleteRecheioBolo,
-} from "../controllers/recheiosBolo.controller.js";
+} from "../../controllers/bolos-confeitados/recheiosBolo.controller.js";
 import multer from "multer";
 
 const router = Router();

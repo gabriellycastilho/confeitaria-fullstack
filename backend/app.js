@@ -4,13 +4,14 @@ import path from "path";
 import { fileURLToPath } from "url";
 import { dirname } from "path";
 import { errorHandler } from "./src/middlewares/errorHandler.js";
-import produtosRoutes from "./src/routes/produtos.routes.js";
-import pedidosRoutes from "./src/routes/pedidos.routes.js";
-import recheiosBoloRoutes from "./src/routes/recheiosBolo.routes.js";
-import authRoutes from "./src/routes/auth.routes.js";
-import cestasRoutes from "./src/routes/cestas.routes.js";
-import precosRecheioRoutes from "./src/routes/precosRecheio.routes.js";
-import recheiosComPrecoRoutes from "./src/routes/recheiosComPreco.routes.js";
+import produtosRoutes from "./src/routes/produtos/produtos.routes.js";
+import pedidosRoutes from "./src/routes/pedidos/pedidos.routes.js";
+import recheiosBoloRoutes from "./src/routes/bolos-confeitados/recheiosBolo.routes.js";
+import authRoutes from "./src/routes/autenticacao/auth.routes.js";
+import cestasRoutes from "./src/routes/cestas-presente/cestas.routes.js";
+import precosRecheioRoutes from "./src/routes/bolos-confeitados/precosRecheio.routes.js";
+import recheiosComPrecoRoutes from "./src/routes/bolos-confeitados/recheiosComPreco.routes.js";
+import depoimentosRoutes from './src/routes/depoimentos/depoimentos.routes.js';
 
 const app = express();
 
@@ -28,7 +29,7 @@ app.use("/produtos", produtosRoutes);
 app.use("/pedidos", pedidosRoutes);
 app.use("/cestas", cestasRoutes);
 app.use("/auth", authRoutes);
-
+app.use("/", depoimentosRoutes);
 app.use("/recheios-bolo", recheiosBoloRoutes);
 app.use("/precos-recheio", precosRecheioRoutes);
 app.use("/recheios", recheiosComPrecoRoutes);

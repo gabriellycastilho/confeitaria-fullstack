@@ -1,10 +1,10 @@
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import { pool } from "../config/db.js";
+import { pool } from "../../config/db.js";
 
 export async function login(req, res, next) {
   const { email, senha } = req.body;
-    
+
   if (!email || !senha) {
     return res.status(400).json({ error: "Email e senha são obrigatórios" });
   }
@@ -30,7 +30,7 @@ export async function login(req, res, next) {
     // Gerar token JWT
     const token = jwt.sign(
       { id: usuario.id, role: usuario.role },
-      process.env.JWT_SECRET, // chave secreta definir no .env
+      process.env.JWT_SECRET,
       { expiresIn: "8h" } // expira em 8 horas
     );
 

@@ -1,5 +1,5 @@
 import express from "express";
-import { getRecheiosComPreco } from "../controllers/recheiosComPreco.controller.js";
+import { getRecheiosComPreco } from "../../controllers/bolos-confeitados/recheiosComPreco.controller.js";
 
 const router = express.Router();
 

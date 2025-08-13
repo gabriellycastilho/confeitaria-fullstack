@@ -1,4 +1,4 @@
-import { pool } from "../config/db.js";
+import { pool } from "../../config/db.js";
 
 // FUNÇÃO PARA CRIAR UM NOVO PEDIDO
 export async function criarPedido(req, res) {

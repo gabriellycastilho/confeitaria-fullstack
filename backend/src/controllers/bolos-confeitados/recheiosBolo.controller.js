@@ -1,4 +1,4 @@
-import { pool } from "../config/db.js";
+import { pool } from "../../config/db.js";
 
 // Controlador para gerenciar recheios de bolo
 // Este controlador permite listar, criar, atualizar e deletar recheios de bolo

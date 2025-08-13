@@ -1,4 +1,4 @@
-import { pool } from "../config/db.js";
+import { pool } from "../../config/db.js";
 
 // Controlador para buscar recheios com preço
 // Este endpoint retorna os recheios disponíveis com seus respectivos preços por kg

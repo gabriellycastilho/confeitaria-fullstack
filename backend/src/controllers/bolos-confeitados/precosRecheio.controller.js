@@ -1,4 +1,4 @@
-import { pool } from "../config/db.js";
+import { pool } from "../../config/db.js";
 
 // Controlador para atualizar o preço por tipo de recheio
 // Este endpoint recebe o tipo de recheio e o novo preço por kg
